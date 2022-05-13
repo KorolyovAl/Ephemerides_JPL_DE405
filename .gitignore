@@ -5,3 +5,10 @@ ephemerides.vcxproj.filters
 ephemerides.vcxproj.user
 results/
 x64/
+Ephemerides_DE_405.vcxproj
+Ephemerides_DE_405.vcxproj.filters
+Ephemerides_DE_405.vcxproj.user
+Release/
+Debug/
+header.405
+header.txt

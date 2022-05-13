@@ -100,7 +100,7 @@ vector<double> Calc_coord(double local_start_j, double time, std::vector<int>& b
 	}
 
 	double VX = 0., VY = 0., VZ = 0.;
-	double koefVelocity = subInterval / 2 * 86400;
+	double koefVelocity = subInterval / 2 * 86'400;
 
 	for (int i = pt.size() - 1; i >= 0; i--) {
 		VX += kx[i] * pt[i];
