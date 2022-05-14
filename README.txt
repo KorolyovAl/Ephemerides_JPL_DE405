@@ -1,13 +1,13 @@
 The ascp file, for example ascp2000.405, consists of blocks of 341 lines each. 
 The block starts with a line like:
+
 "1   1018" 
-Where the first number is the block number, the second number is the number of 
-coefficients in the block (unchanged). Each block contains a number of coefficients for 
-approximating the equatorial rectangular coordinates (XYZ) of the planets of the Solar 
-System within a 32-day interval. 
-The block consists of 340 lines of 3 coefficients per line, a total of 1020 magic numbers, 
-but the first two are not used.
+
+Where the first number is the block number, the second number is the number of coefficients in the block (unchanged). Each block contains a number of coefficients for 
+approximating the equatorial rectangular coordinates (XYZ) of the planets of the Solar System within a 32-day interval. 
+The block consists of 340 lines of 3 coefficients per line, a total of 1020 magic numbers, but the first two are not used.
 The ascp2000.405 file does not start from January 1, 2000, as one might think, but from 12/24/1999 0.0 UT.
+
 Header file.405 contains such an important group of numbers:
 
 GROUP   1050
@@ -75,9 +75,7 @@ X = kX(1)*p(1) + ... + kX(13)*p(13)
 X’ = kX(1)*pt(1) +... + kX(13)*pt(13)
 Y = kY(1)*p(1) + ... + kY(13)*p(13)
 
-As a result, we have X,Y,Z barycentric in kilometers. To switch to the heliocentric coordinate system, you need to similarly calculate the barycentric
-vector of the Sun and take the difference of the vectors. To switch to the ecliptic coordinate system, the vector must be expanded accordingly. For the moon , the vector is calculated 
-geocentric.
+As a result, we have X,Y,Z barycentric in kilometers. To switch to the heliocentric coordinate system, you need to similarly calculate the barycentric vector of the Sun and take the difference of the vectors. To switch to the ecliptic coordinate system, the vector must be expanded accordingly. For the moon , the vector is calculated geocentric.
 
 The calculated velocity vector must be divided by the coefficient koefVelocity = subInterval / 2 * 86400 (the number of seconds in half of the subinterval) to obtain
 the dimension of km/sec.
