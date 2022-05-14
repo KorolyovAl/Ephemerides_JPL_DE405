@@ -19,7 +19,7 @@ The first vertical triple of numbers (3, 14, 4) is intended for Mercury. The coe
 as you might guess), there are 14 coefficients for each coordinate, and the block interval of 32 days is divided into 4 subintervals, that is, for each 8-day
 subinterval there is a set of coefficients.
 Accordingly, the coefficient numbers for Venus in the block are from 171 to 230, 10 coefficients per coordinate, 2 subintervals (each subinterval = 16 days).
-Etc.
+
 The coefficients for the bodies are arranged in the following order:
 Mercury,  Venus,  Earth-Moon barycenter,  Mars ,  Jupiter ,  Saturn,  Uranus,  Neptune,  Pluto,  Moon (geocentric),  Sun.
 
@@ -58,22 +58,22 @@ IndBegin  =    39
 Skip the first 39 coefficients and read the remaining ones: kX(from 1 to 13) for X, kY(from 1 to 13) for Y, kZ(from 1 to 13) for Z.
 
 The argument in Chebyshev polynomials is the normalized time (from -1 to 1) inside the subinterval:
-tau = 2 * (MD - Mdat) / subInterval - 1
+     tau = 2 * (MD - Mdat) / subInterval - 1
 For the example in question, tau= 0.778744479166562
 
 There are 13 coefficients (for Earth), 13 Chebyshev polynomials are needed.
-p(1) = 1
- p(2) = tau
- p(i) = 2 * tau * p(i - 1) - p(i - 2)
+      p(1) = 1
+      p(2) = tau
+      p(i) = 2 * tau * p(i - 1) - p(i - 2)
 And at the same time 13 derivatives of Chebyshev polynomials:
-pt(1) = 0
- pt(2) = 1
- pt(i) = 2 * (p(i - 1) + tau * pt(i - 1)) - pt(i - 2)
+      pt(1) = 0
+      pt(2) = 1
+      pt(i) = 2 * (p(i - 1) + tau * pt(i - 1)) - pt(i - 2)
 
 Calculate coordinates and velocities:
-X = kX(1)*p(1) + ... + kX(13)*p(13)
-X’ = kX(1)*pt(1) +... + kX(13)*pt(13)
-Y = kY(1)*p(1) + ... + kY(13)*p(13)
+     X = kX(1)*p(1) + ... + kX(13)*p(13)
+     X’ = kX(1)*pt(1) +... + kX(13)*pt(13)
+     Y = kY(1)*p(1) + ... + kY(13)*p(13)
 
 As a result, we have X,Y,Z barycentric in kilometers. To switch to the heliocentric coordinate system, you need to similarly calculate the barycentric vector of the Sun and take the difference of the vectors. To switch to the ecliptic coordinate system, the vector must be expanded accordingly. For the moon , the vector is calculated geocentric.
 
