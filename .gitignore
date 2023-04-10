@@ -1,14 +1,6 @@
-code_part.txt
-debug info.txt
-ephemerides.vcxproj
-ephemerides.vcxproj.filters
-ephemerides.vcxproj.user
-results/
+.vs/
 x64/
-Ephemerides_DE_405.vcxproj
-Ephemerides_DE_405.vcxproj.filters
-Ephemerides_DE_405.vcxproj.user
-Release/
-Debug/
-header.405
-header.txt
+ephemerides_project.sln
+ephemerides_project.vcxproj
+ephemerides_project.vcxproj.filters
+ephemerides_project.vcxproj.user
