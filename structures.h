@@ -28,7 +28,6 @@ class Space_object {
 public:
 	bool object_state;
 	std::vector<int> object_header_data;
-	std::map<double, std::vector<double>> object_data; // key - date; value - coordinates vector
 	std::string object_name;
 	std::ofstream obj_file;
 	int object_lenght;
@@ -38,11 +37,7 @@ public:
 		object_state = false;
 		first_step = false;
 		object_lenght = 0;
-	}
-
-	void Clear_data() {
-		object_data.clear();
-	}
+	}	
 };
 
 class Ephemerides {

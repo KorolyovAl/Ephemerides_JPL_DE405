@@ -27,3 +27,4 @@ std::vector<double> Get_position(std::vector<double> body_1, std::vector<double>
 std::vector<double> Get_position_earth(std::vector<double> body_1, std::vector<double> body_2, double emrat);
 
 void PrintIntoFile(std::ofstream& stream, std::map<double, std::vector<double>>& body, const double MD);
+void PrintIntoFile1(std::ofstream& stream, std::vector<double>& body, const double MD);
