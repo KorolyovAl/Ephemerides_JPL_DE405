@@ -12,7 +12,7 @@ void CalculateSingleThread(Ephemerides& eph, int i) {
 		//cout << date_check << endl;
 		
 		std::vector<double> coords = Calc_coord(md0, MD, object_header_data, eph.bodies[i].object_lenght, coef[numer_block - 1], numer_block);
-		PrintIntoFile1(eph.bodies[i].obj_file, coords, MD);
+		PrintIntoFile(eph.bodies[i].obj_file, coords, MD);
 	}
 	std::cout << "Calculate coordinates for " << eph.bodies[i].object_name << " is over" << std::endl;
 }
