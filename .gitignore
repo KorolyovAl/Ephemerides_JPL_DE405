@@ -1,7 +1,7 @@
 .vs/
 x64/
-results/
 ephemerides_project.sln
 ephemerides_project.vcxproj
 ephemerides_project.vcxproj.filters
 ephemerides_project.vcxproj.user
+results/

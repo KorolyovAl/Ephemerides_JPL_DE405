@@ -1,9 +1,8 @@
 #include "calculating_coordinates.h"
 
 void CalculateSingleThread(Ephemerides& eph, int i) {
-	
+	std::cout << "Calculate coordinates for " << eph.bodies[i].object_name << " is running" << std::endl;
 	std::vector<std::vector<double>>& coef = eph.coef;
-	std::map<double, std::vector<double>>& Obj = eph.bodies[i].object_data;
 	std::vector<int>& object_header_data = eph.bodies[i].object_header_data;
 	double md0 = eph.coef[0][0];
 
@@ -12,26 +11,34 @@ void CalculateSingleThread(Ephemerides& eph, int i) {
 		std::string date_check = Get_gregorian_date(MD);
 		//cout << date_check << endl;
 		
-		Obj[MD] = Calc_coord(md0, MD, object_header_data, eph.bodies[i].object_lenght, coef[numer_block - 1], numer_block);
-		PrintIntoFile(eph.bodies[i].obj_file, Obj, MD);
+		std::vector<double> coords = Calc_coord(md0, MD, object_header_data, eph.bodies[i].object_lenght, coef[numer_block - 1], numer_block);
+		PrintIntoFile(eph.bodies[i].obj_file, coords, MD);
 	}
-	eph.bodies[i].Clear_data();
+	std::cout << "Calculate coordinates for " << eph.bodies[i].object_name << " is over" << std::endl;
 }
 
 void Run_calculating_coordinates(Ephemerides& eph)
 {
-	std::vector<std::thread> vectorOfThreads;
-	vectorOfThreads.reserve(eph.bodies.size());
-	for (int i = 0; i < eph.bodies.size(); i++) {
-		if (eph.bodies[i].object_state) {
-			std::thread th(CalculateSingleThread, std::ref(eph), i); 
-			vectorOfThreads.push_back(std::move(th)); // Move all thread objects to vector
+	bool multithread = true;
+	if (multithread) {
+		std::vector<std::thread> vectorOfThreads;
+		vectorOfThreads.reserve(eph.bodies.size());
+		for (int i = 0; i < eph.bodies.size(); i++) {
+			if (eph.bodies[i].object_state) {
+				std::thread th(CalculateSingleThread, std::ref(eph), i);
+				vectorOfThreads.push_back(std::move(th)); // Move all thread objects to vector
+			}
 		}
-	}
 
-	for (std::thread& th : vectorOfThreads) {
-		if (th.joinable()) {
-			th.join();
+		for (std::thread& th : vectorOfThreads) {
+			if (th.joinable()) {
+				th.join();
+			}
 		}
 	}
+	else {
+		for (int i = 0; i < eph.bodies.size(); i++) {
+			if (eph.bodies[i].object_state) { CalculateSingleThread(eph, i); }
+		}
+	}	
 }

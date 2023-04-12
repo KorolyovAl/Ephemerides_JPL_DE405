@@ -124,14 +124,14 @@ std::vector<double> Get_position_earth(std::vector<double> body_1, std::vector<d
 		body_1[5] - body_2[5] / (1 + emrat) };
 }
 
-void PrintIntoFile(std::ofstream& stream, std::map<double, std::vector<double>>& body, const double MD) {
+void PrintIntoFile(std::ofstream& stream, std::vector<double>& body, const double MD) {
 	stream << "date = " << std::left << std::scientific << std::setw(12) << std::setprecision(8) << MD
-		<< " X = " << std::setw(26) << std::setprecision(18) << body[MD][0]
-		<< " Y = " << std::setw(26) << std::setprecision(18) << body[MD][1]
-		<< " Z = " << std::setw(26) << std::setprecision(18) << body[MD][2]
-		<< " R = " << std::setw(26) << sqrt(body[MD][0] * body[MD][0] + body[MD][1] * body[MD][1] + body[MD][2] * body[MD][2])
-		<< " VX = " << std::setw(15) << std::setprecision(6) << body[MD][3]
-		<< " VY = " << std::setw(15) << std::setprecision(6) << body[MD][4]
-		<< " VZ = " << std::setw(15) << std::setprecision(6) << body[MD][5]
+		<< " X = " << std::setw(26) << std::setprecision(18) << body[0]
+		<< " Y = " << std::setw(26) << std::setprecision(18) << body[1]
+		<< " Z = " << std::setw(26) << std::setprecision(18) << body[2]
+		<< " R = " << std::setw(26) << sqrt(body[0] * body[0] + body[1] * body[1] + body[2] * body[2])
+		<< " VX = " << std::setw(15) << std::setprecision(6) << body[3]
+		<< " VY = " << std::setw(15) << std::setprecision(6) << body[4]
+		<< " VZ = " << std::setw(15) << std::setprecision(6) << body[5]
 		<< '\n';
 }
