@@ -1,5 +1,5 @@
 <a id="start"></a>
-A program for calculating the coordinates and velocities of the planets of the solar system from NASA ephemeris JPL [DE405](http://ssd.jpl.nasa.gov/ftp/eph/planets/ascii/de405 /). All coordinates are calculated relative to the barycenter of the solar system.\
+A program for calculating the coordinates and velocities of the planets of the solar system from NASA ephemeris JPL [DE405](http://ssd.jpl.nasa.gov/ftp/eph/planets/ascii/de405). All coordinates are calculated relative to the barycenter of the solar system.\
 For the program to work, ephemeris files should be placed in the files folder at the root of the project (the path to the files is set in initialization.cpp and reading_ascp.cpp ). The results are saved to the results folder (if there is no such folder, it is necessary to create it).
 
 ---
