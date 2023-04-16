@@ -69,9 +69,9 @@ The ascp2000.405 file does not start from January 1, 2000, as one might think, b
 Algorithm for determining the coordinates of the body:\
 Calculate the number of the desired block:\
 Let\
-MD0 = MJD(1999,12,24) – the initial Julian date of the ascp2000.405 file\ 
+MD0 = MJD(1999,12,24) – the initial Julian date of the ascp2000.405 file  
 MD – the desired date for which the coordinates must be calculated.\
-Interval = 32 (the length of the interval in days during which a separate block of coefficients is valid) is set in the header file.405 in "GROUP 1030".\ 
+Interval = 32 (the length of the interval in days during which a separate block of coefficients is valid) is set in the header file.405 in "GROUP 1030".  
 Block number:\
 NumerBlock =  Int((MD - md0) / Interval) + 1\
 The start date of the required block:\
