@@ -125,7 +125,8 @@ std::vector<double> Get_position_earth(std::vector<double> body_1, std::vector<d
 }
 
 void PrintIntoFile(std::ofstream& stream, std::vector<double>& body, const double MD) {
-	stream << "date = " << std::left << std::scientific << std::setw(12) << std::setprecision(8) << MD
+	stream << "julian_date = " << std::left << std::scientific << std::setw(12) << std::setprecision(8) << MD
+		<< " gregorian_date = " << Get_gregorian_date(MD)
 		<< " X = " << std::setw(26) << std::setprecision(18) << body[0]
 		<< " Y = " << std::setw(26) << std::setprecision(18) << body[1]
 		<< " Z = " << std::setw(26) << std::setprecision(18) << body[2]
